@@ -1,16 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
- * main - tests function that prints if integer is positive or negative
- * Return: 0
+ * main - check the code
+ *
+ * Return: Always 0.
  */
-
-int main(void)
+int main(int ac, char **av)
 {
-	int i;
+    ssize_t n;
 
-	i = 0;
-	positive_or_negative(i);
-
-	return (0);
+    if (ac != 2)
+    {
+        dprintf(2, "Usage: %s filename\n", av[0]);
+        exit(1);
+    }
+    n = read_textfile(av[1], 114);
+    printf("\n(printed chars: %li)\n", n);
+    n = read_textfile(av[1], 1024);
+    printf("\n(printed chars: %li)\n", n);
+    return (0);
 }
